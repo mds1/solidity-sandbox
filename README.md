@@ -44,7 +44,9 @@ Add it to your `.bashrc` file so you can call `scratch` from anywhere!
 
 ```bash
 scratch() {
+  dir=$(pwd)
   cd <path to solidity-sandbox>
   bash newTest.sh $1
+  cd $dir
 }
 ```
