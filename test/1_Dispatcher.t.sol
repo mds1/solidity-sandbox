@@ -14,7 +14,6 @@ contract Test1 is Test {
   // being the 4th selector in the search, it becomes the second function after the initial
   // branch check is performed.
 
-
   // selector: 663bc990
   function test_1() public {}
 
@@ -29,8 +28,4 @@ contract Test1 is Test {
 
   // selector: ed94943a
   // function test_5aaaaaaaaaaaaaaaaaa() public {}
-
 }
-
-
-

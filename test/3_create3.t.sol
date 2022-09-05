@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
+
 import "forge-std/Test.sol";
 import "solmate/utils/CREATE3.sol";
 import "solmate/test/utils/mocks/MockERC20.sol";
@@ -11,7 +12,9 @@ contract Test3 is Test {
     MockERC20 deployed = MockERC20(
       CREATE3.deploy(
         salt,
-        abi.encodePacked(type(MockERC20).creationCode, abi.encode("Mock Token", "MOCK", 18)),
+        abi.encodePacked(
+          type(MockERC20).creationCode, abi.encode("Mock Token", "MOCK", 18)
+        ),
         0
       )
     );

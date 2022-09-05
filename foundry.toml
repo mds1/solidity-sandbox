@@ -3,3 +3,12 @@ solc-version = "0.8.15"
 optimizer = false # faster compilation
 optimizer-runs = 10_000_000
 fs_permissions = [{ access = "read-write", path = "./"}]
+
+[profile.default.fmt]
+line_length = 80
+tab_width = 2
+bracket_spacing = false
+int_types = 'short'
+func_attrs_with_params_multiline = true
+quote_style = 'double'
+number_underscore = 'thousands'
