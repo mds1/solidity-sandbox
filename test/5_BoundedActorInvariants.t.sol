@@ -1,17 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "forge-std/Test.sol";
-
-contract SampleContract {
-
-    uint256 value;
-
-    function setValue(uint256 value_) external {
-        value = value_;
-    }
-
-}
+import { Test } from "forge-std/Test.sol";
 
 contract Actor {
 
@@ -43,6 +33,16 @@ contract InvariantTest {
     function excludeContracts() public view returns (address[] memory excludedContracts_) {
         require(_excludedContracts.length != uint256(0), "NO_TARGET_CONTRACTS");
         return _excludedContracts;
+    }
+
+}
+
+contract SampleContract {
+
+    uint256 value;
+
+    function setValue(uint256 value_) external {
+        value = value_;
     }
 
 }
