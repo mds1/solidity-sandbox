@@ -1,14 +1,15 @@
 [profile.default]
-solc-version = "0.8.15"
-optimizer = false # faster compilation
-optimizer-runs = 10_000_000
-fs_permissions = [{ access = "read-write", path = "./"}]
+  fs_permissions = [{ access = "read-write", path = "./" }]
+  optimizer = false                                         # faster compilation
+  optimizer-runs = 10_000_000
+  solc-version = "0.8.15"
 
 [profile.default.fmt]
-line_length = 80
-tab_width = 2
-bracket_spacing = false
-int_types = 'short'
-func_attrs_with_params_multiline = true
-quote_style = 'double'
-number_underscore = 'thousands'
+  bracket_spacing = false
+  int_types = 'short'
+  line_length = 80
+  multiline_func_header = 'attributes_first'
+  number_underscore = 'thousands'
+  quote_style = 'double'
+  single_line_statement_blocks = 'single'
+  tab_width = 2
