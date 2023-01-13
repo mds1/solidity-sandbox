@@ -3,6 +3,7 @@
   optimizer = false                                         # faster compilation
   optimizer-runs = 10_000_000
   solc-version = "0.8.15"
+  verbosity = 3
 
 [profile.default.fmt]
   bracket_spacing = false
