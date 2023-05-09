@@ -10,7 +10,7 @@ import
 contract OzGovernorCountingSimpleUpgradeable is
   GovernorCountingSimpleUpgradeable
 {
-  function _getVotes(address account, uint blockNumber, bytes memory params)
+  function _getVotes(address, uint, bytes memory)
     internal
     pure
     override
@@ -19,7 +19,7 @@ contract OzGovernorCountingSimpleUpgradeable is
     return 0;
   }
 
-  function quorum(uint blockNumber) public pure override returns (uint) {
+  function quorum(uint) public pure override returns (uint) {
     return 0;
   }
 
