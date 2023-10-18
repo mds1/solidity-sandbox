@@ -44,25 +44,34 @@ import "forge-std/Test.sol";
  *
  * [profile.default.fuzz]
  * runs = 256                  # The number of test cases ran for each property test.
- * max_global_rejects = 65536  # When using `vm.assume`, each failed check is a reject. A test fails when it exceeds this number of rejections.
- * dictionary_weight = 40      # Use values collected from your contracts 40% of the time, random 60% of the time.
- * include_storage = true      # Collect values from contract storage and add them to the dictionary.
- * include_push_bytes = true   # Collect PUSH bytes from the contract code and add them to the dictionary.
+ * max_global_rejects = 65536  # When using `vm.assume`, each failed check is a reject. A test fails
+ * when it exceeds this number of rejections.
+ * dictionary_weight = 40      # Use values collected from your contracts 40% of the time, random
+ * 60% of the time.
+ * include_storage = true      # Collect values from contract storage and add them to the
+ * dictionary.
+ * include_push_bytes = true   # Collect PUSH bytes from the contract code and add them to the
+ * dictionary.
  *
  * [profile.default.invariant]
  * runs = 256                 # The number of runs for each invariant test.
- * depth = 15                 # The number of calls executed to attempt to break invariants in one run.
+ * depth = 15                 # The number of calls executed to attempt to break invariants in one
+ * run.
  * fail_on_revert = false     # Fails the invariant test if a revert occurs.
- * call_override = false      # Allows overriding an unsafe external call when running invariant tests, e.g. reentrancy checks (this feature is still a WIP).
- * dictionary_weight = 80     # Use values collected from your contracts 80% of the time, random 20% of the time.
+ * call_override = false      # Allows overriding an unsafe external call when running invariant
+ * tests, e.g. reentrancy checks (this feature is still a WIP).
+ * dictionary_weight = 80     # Use values collected from your contracts 80% of the time, random 20%
+ * of the time.
  * include_storage = true     # Collect values from contract storage and add them to the dictionary.
- * include_push_bytes = true  # Collect PUSH bytes from the contract code and add them to the dictionary.
+ * include_push_bytes = true  # Collect PUSH bytes from the contract code and add them to the
+ * dictionary.
  */
 contract NonceCounter {
   // Invariant must hold before any calls are made, so we start this at 1 to ensure `1 > 0` and
-  // avoid the need for int256s to start `lastNonce` at -1. Once https://github.com/foundry-rs/foundry/issues/2985
+  // avoid the need for int256s to start `lastNonce` at -1. Once
+  // https://github.com/foundry-rs/foundry/issues/2985
   // is implemented we can start this at zero and conditionally skip the check on the first run.
-  uint public nonce = 1;
+  uint256 public nonce = 1;
 
   function increment() public {
     nonce++;
@@ -76,7 +85,7 @@ contract NonceCounter {
 
 contract Test4 is Test {
   NonceCounter nonceCounter; // Contract under test.
-  uint lastNonce; // Last nonce seen, this is what we test against.
+  uint256 lastNonce; // Last nonce seen, this is what we test against.
 
   function setUp() public {
     nonceCounter = new NonceCounter();
@@ -115,17 +124,17 @@ contract Test4 is Test {
   //   function targetSelectors() public returns (FuzzSelector[] memory);
   //
   //   function excludeContracts() public returns (address[] memory);
-  //   function excludeArtifacts() public returns (string[] memory); // ["Contract1","src/Contract2.sol:Contract2"]
+  //   function excludeArtifacts() public returns (string[] memory); //
+  // ["Contract1","src/Contract2.sol:Contract2"]
   //   function targetContracts() public returns (address[] memory);
-  //   function targetArtifacts() public returns (string[] memory); // ["Contract1","src/Contract2.sol:Contract2"]
+  //   function targetArtifacts() public returns (string[] memory); //
+  // ["Contract1","src/Contract2.sol:Contract2"]
 
   function invariant_NonceGoUp() external {
     console2.log("lastNonce: ", lastNonce);
-    uint currentNonce = nonceCounter.nonce();
+    uint256 currentNonce = nonceCounter.nonce();
     console2.log("currentNonce: ", currentNonce);
-    require(
-      currentNonce > lastNonce, "Invariant violated: Nonce did not increase"
-    );
+    require(currentNonce > lastNonce, "Invariant violated: Nonce did not increase");
     lastNonce = currentNonce;
   }
 }

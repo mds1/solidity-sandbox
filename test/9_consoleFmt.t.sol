@@ -12,4 +12,3 @@ contract Test9 is Test {
     console2.log("x is %e", x);
   }
 }
-

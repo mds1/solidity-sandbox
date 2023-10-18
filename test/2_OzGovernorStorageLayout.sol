@@ -4,30 +4,22 @@ pragma solidity ^0.8.15;
 import "forge-std/Test.sol";
 import
   "openzeppelin-contracts-upgradeable/contracts/governance/extensions/GovernorCountingSimpleUpgradeable.sol";
-import
-  "openzeppelin-contracts-upgradeable/contracts/governance/TimelockControllerUpgradeable.sol";
+import "openzeppelin-contracts-upgradeable/contracts/governance/TimelockControllerUpgradeable.sol";
 
-contract OzGovernorCountingSimpleUpgradeable is
-  GovernorCountingSimpleUpgradeable
-{
-  function _getVotes(address, uint, bytes memory)
-    internal
-    pure
-    override
-    returns (uint)
-  {
+contract OzGovernorCountingSimpleUpgradeable is GovernorCountingSimpleUpgradeable {
+  function _getVotes(address, uint256, bytes memory) internal pure override returns (uint256) {
     return 0;
   }
 
-  function quorum(uint) public pure override returns (uint) {
+  function quorum(uint256) public pure override returns (uint256) {
     return 0;
   }
 
-  function votingDelay() public pure override returns (uint) {
+  function votingDelay() public pure override returns (uint256) {
     return 0;
   }
 
-  function votingPeriod() public pure override returns (uint) {
+  function votingPeriod() public pure override returns (uint256) {
     return 0;
   }
 }
