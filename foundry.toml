@@ -1,8 +1,8 @@
 [profile.default]
   fs_permissions = [{ access = "read-write", path = "./" }]
   optimizer = true
-  optimizer-runs = 10_000_000
-  solc-version = "0.8.19"
+  optimizer-runs = 200
+  solc-version = "0.8.15"
   verbosity = 3
 
 [fmt]
