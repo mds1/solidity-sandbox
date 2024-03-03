@@ -23,13 +23,13 @@ contract Test11 is Test {
 
   function test_immutableCheck() external {
     gas = gasleft();
-    require(hasRole(MANAGER_ROLE_IMMUT, msg.sender), "Caller is not in manager role"); // 24425 gas
+    require(hasRole(MANAGER_ROLE_IMMUT, msg.sender), "Caller is not in manager role"); // 24408 gas
     console2.log(gas -= gasleft());
   }
 
   function test_constantCheck() external {
     gas = gasleft();
-    require(hasRole(MANAGER_ROLE_CONST, msg.sender), "Caller is not in manager role"); // 24425 gas
+    require(hasRole(MANAGER_ROLE_CONST, msg.sender), "Caller is not in manager role"); // 24419 gas
     console2.log(gas -= gasleft());
   }
 }
